@@ -3,6 +3,21 @@
 version = 4
 
 [[package]]
+name = "EduBoardAPI"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "reqwest",
+ "scraper",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tower-http",
+ "tracing",
+ "tracing-subscriber",
+]
+
+[[package]]
 name = "addr2line"
 version = "0.25.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -279,21 +294,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cd1511a7b6a56299bd043a9c167a6d2bfb37bf84a6dfceaba651168adfb43c87"
 dependencies = [
  "dtoa",
-]
-
-[[package]]
-name = "eduboardapi"
-version = "0.1.0"
-dependencies = [
- "axum",
- "reqwest",
- "scraper",
- "serde",
- "serde_json",
- "tokio",
- "tower-http",
- "tracing",
- "tracing-subscriber",
 ]
 
 [[package]]
