@@ -9,8 +9,8 @@ use std::net::SocketAddr;
 use std::sync::Arc;
 
 use axum::Router;
-use tower_http::LatencyUnit;
 use tower_http::trace::{DefaultMakeSpan, DefaultOnRequest, DefaultOnResponse, TraceLayer};
+use tower_http::LatencyUnit;
 use tracing::Level;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
@@ -44,12 +44,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .level(Level::INFO)
                 .latency_unit(LatencyUnit::Millis),
         );
+    
     let app: Router = fetch::router(state).layer(trace_layer);
 
     let addr: SocketAddr = "0.0.0.0:3000".parse()?;
     let listener = tokio::net::TcpListener::bind(addr).await?;
     println!(
-        "Server Running...\nHost: {} \nPort: {}",
+        "API Server Running...\nHost: {} \nPort: {}",
         addr.ip(),
         addr.port()
     );

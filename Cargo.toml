@@ -1,7 +1,8 @@
 [package]
-name = "eduboardapi"
+name = "EduBoardAPI"
 version = "0.1.0"
 edition = "2024"
+description = "API Wrapper For Bangladesh Education Board Website"
 
 [dependencies]
 axum = "0.8.4"
