@@ -42,7 +42,33 @@ GET /fetch
 curl "http://localhost:3000/fetch?exam=ssc&year=2024&board=dhaka&roll=123456&reg=1234567890"
 ```
 
-Returns JSON with student info, grades, GPA etc.
+**Response:**
+```json
+{
+  "roll": "123456",
+  "reg": "1234567890",
+  "name": "Student Name",
+  "father_name": "Father's Name",
+  "mother_name": "Mother's Name",
+  "board": "Dhaka",
+  "group": "Science",
+  "exam_type": "Regular",
+  "dob": "01-01-2008",
+  "institute": "School Name",
+  "result": "Passed",
+  "gpa": "5.00",
+  "grades": [
+    {
+      "subject": "Bangla",
+      "grade": "A+"
+    },
+    {
+      "subject": "English",
+      "grade": "A"
+    }
+  ]
+}
+```
 
 ## Setup
 
