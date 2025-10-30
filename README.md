@@ -86,10 +86,10 @@ Server runs on port 3000.
 ## Development
 
 ```bash
-cargo run        # run it
-cargo test       # test it
-cargo clippy     # lint it
-cargo fmt        # format it
+cargo run       
+cargo test      
+cargo clippy   
+cargo fmt      
 ```
 
 ## Errors
