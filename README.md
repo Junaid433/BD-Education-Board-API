@@ -40,13 +40,14 @@ A fast, reliable REST API for fetching Bangladesh Education Board results. Built
 
 ## API Usage
 
-### Endpoint
+### Endpoints
 
 ```
 GET /fetch
+POST /fetch
 ```
 
-### Query Parameters
+### Query Parameters (GET)
 
 | Parameter | Type   | Required | Description                  |
 |-----------|--------|----------|------------------------------|
@@ -56,10 +57,28 @@ GET /fetch
 | roll      | string | Yes      | Roll number (max 6 digits)   |
 | reg       | string | Yes      | Registration number          |
 
-### Example Request
+### Request Body (POST)
+
+| Field | Type   | Required | Description                  |
+|-------|--------|----------|------------------------------|
+| exam  | string | Yes      | Examination type (e.g., ssc) |
+| year  | string | Yes      | Year (1996-2025)            |
+| board | string | Yes      | Board name                   |
+| roll  | string | Yes      | Roll number (max 6 digits)   |
+| reg   | string | Yes      | Registration number          |
+
+### Example POST Request
 
 ```bash
-curl "http://localhost:3000/fetch?exam=ssc&year=2024&board=dhaka&roll=123456&reg=1234567890"
+curl -X POST http://localhost:3000/fetch \
+  -H "Content-Type: application/json" \
+  -d '{
+    "exam": "ssc",
+    "year": "2024",
+    "board": "dhaka",
+    "roll": "123456",
+    "reg": "1234567890"
+  }'
 ```
 
 ### Example Response
