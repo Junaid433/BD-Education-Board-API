@@ -70,11 +70,8 @@ curl -X POST http://localhost:3000/fetch \
 You'll need [Rust](https://rustup.rs/) installed.
 
 ```bash
-# Clone
 git clone https://github.com/Junaid433/eduboardapi.git
 cd eduboardapi
-
-# Run
 cargo run --release
 ```
 
