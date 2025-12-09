@@ -89,5 +89,3 @@ This is an unofficial tool for educational purposes. It just scrapes data from t
 
 **Junaid Rahman**
 [GitHub](https://github.com/Junaid433) | [Facebook](https://facebook.com/jnaid.rahman.im)
-
-If this saved you some time, feel free to [buy me a coffee](https://www.buymeacoffee.com/Junaid433).
