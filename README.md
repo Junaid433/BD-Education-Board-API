@@ -1,73 +1,42 @@
 # Bangladesh Education Board Results API
 
-A fast, reliable REST API for fetching Bangladesh Education Board results. Built with Rust and Axum for high performance and reliability.
+A lightweight Rust service that wraps the official Bangladesh Education Board website to provide a clean JSON API for exam results. It handles the captcha automatically so you don't have to.
 
-## Features
+Built with **Rust** and **Axum**.
 
-- 🚀 Fast and efficient result fetching
-- 🔧 Built with Rust for performance and safety
-- 📊 Support for multiple examination types (SSC, HSC, JSC, etc.)
-- 🏫 All major education boards supported
-- 🔄 Automatic captcha solving
-- 📡 RESTful API with JSON responses
-- 📝 Comprehensive logging and error handling
+## Key Features
 
-## Supported Examinations
+*   **Fast**: Written in Rust for minimal overhead.
+*   **Auto-Captcha**: Automatically solves the math captcha on the official site.
+*   **JSON Output**: Parses the HTML result sheet into a structured JSON response.
+*   **Full Support**: Works for all education boards and exam types (SSC, HSC, JSC, Diploma, etc).
 
-- SSC/Dakhil/Equivalent
-- JSC/JDC
-- SSC (Vocational)
-- HSC/Alim
-- HSC (Vocational)
-- HSC (BM)
-- Diploma in Commerce
-- Diploma in Business Studies
+## Supported Exams & Boards
 
-## Supported Boards
+*   **Exams**: SSC/Dakhil, JSC/JDC, HSC/Alim, Vocational, BM, Diploma in Commerce/Business Studies.
+*   **Boards**: Dhaka, Barisal, Chittagong, Comilla, Dinajpur, Jessore, Mymensingh, Rajshahi, Sylhet, Madrasah, Technical, DIBS.
 
-- Barisal
-- Chittagong
-- Comilla
-- Dhaka
-- Dinajpur
-- Jessore
-- Mymensingh
-- Rajshahi
-- Sylhet
-- Madrasah
-- Technical
-- DIBS (Dhaka)
+## Usage
 
-## API Usage
+You can hit the API via `GET` or `POST`. Both do the same thing.
 
-### Endpoints
+**Base URL**: `http://localhost:3000`
 
-```
-GET /fetch
-POST /fetch
-```
+### 1. Fetch Result
 
-### Query Parameters (GET)
+**Endpoint**: `/fetch`
 
-| Parameter | Type   | Required | Description                  |
-|-----------|--------|----------|------------------------------|
-| exam      | string | Yes      | Examination type (e.g., ssc) |
-| year      | string | Yes      | Year (1996-2025)            |
-| board     | string | Yes      | Board name                   |
-| roll      | string | Yes      | Roll number (max 6 digits)   |
-| reg       | string | Yes      | Registration number          |
+**Parameters:**
 
-### Request Body (POST)
+| Field | Description | Example |
+| :--- | :--- | :--- |
+| `exam` | Exam name | `ssc`, `hsc` |
+| `year` | Exam year | `2024` |
+| `board` | Board name | `dhaka` |
+| `roll` | Student Roll | `123456` |
+| `reg` | Registration No | `1234567890` |
 
-| Field | Type   | Required | Description                  |
-|-------|--------|----------|------------------------------|
-| exam  | string | Yes      | Examination type (e.g., ssc) |
-| year  | string | Yes      | Year (1996-2025)            |
-| board | string | Yes      | Board name                   |
-| roll  | string | Yes      | Roll number (max 6 digits)   |
-| reg   | string | Yes      | Registration number          |
-
-### Example POST Request
+### curl Example
 
 ```bash
 curl -X POST http://localhost:3000/fetch \
@@ -81,124 +50,47 @@ curl -X POST http://localhost:3000/fetch \
   }'
 ```
 
-### Example Response
+### Response
 
 ```json
 {
-  "roll": "123456",
-  "reg": "1234567890",
   "name": "Student Name",
-  "father_name": "Father's Name",
-  "mother_name": "Mother's Name",
   "board": "Dhaka",
-  "group": "Science",
-  "exam_type": "Regular",
-  "dob": "01-01-2008",
-  "institute": "School Name",
   "result": "Passed",
   "gpa": "5.00",
   "grades": [
-    {
-      "subject": "Bangla",
-      "grade": "A+"
-    },
-    {
-      "subject": "English",
-      "grade": "A"
-    }
+    { "subject": "Bangla", "grade": "A+" },
+    { "subject": "English", "grade": "A" }
   ]
 }
 ```
 
-## Installation
+## Setup & Run
 
-### Prerequisites
-
-- Rust 1.70+ (install from [rustup.rs](https://rustup.rs/))
-- Git
-
-### Build from Source
+You'll need [Rust](https://rustup.rs/) installed.
 
 ```bash
-# Clone the repository
+# Clone
 git clone https://github.com/Junaid433/eduboardapi.git
 cd eduboardapi
 
-# Build the project
-cargo build --release
-
-# Run the server
+# Run
 cargo run --release
 ```
 
-The API server will start on `http://localhost:3000`
-
-## Configuration
-
-The server runs on port 3000 by default. You can modify this in `src/main.rs`:
-
-```rust
-let addr: SocketAddr = "0.0.0.0:3000".parse()?;
-```
-
-## Development
-
-```bash
-# Run in development mode with hot reloading
-cargo watch -x run
-
-# Run tests
-cargo test
-
-# Check code quality
-cargo clippy
-
-# Format code
-cargo fmt
-```
-
-## Error Handling
-
-The API returns appropriate HTTP status codes:
-
-- `200 OK` - Successful request
-- `400 Bad Request` - Invalid parameters or captcha error
-- `502 Bad Gateway` - Network error or parsing error
+Server starts at `http://localhost:3000`. To change the port, just edit the `addr` bind in `src/main.rs`.
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Feel free to open a PR if you want to add something or fix a bug. If it's a major change, open an issue first so we can chat about it.
 
 ## Disclaimer
 
-This API is for educational purposes only. The data belongs to the Bangladesh Education Board. Please use responsibly and in accordance with the board's terms of service.
+This is an unofficial tool for educational purposes. It just scrapes data from the public education board website. Use it responsibly.
 
-## Acknowledgments
+## Author
 
-- Bangladesh Education Board for providing public access to results
-- The Rust community for excellent libraries and tools
+**Junaid Rahman**
+[GitHub](https://github.com/Junaid433) | [Facebook](https://facebook.com/jnaid.rahman.im)
 
-## Support
-
-If you find this project helpful, consider:
-
-- ⭐ Starring the repository
-- 🐛 Reporting bugs
-- 💡 Suggesting new features
-- ☕ [Buy me a coffee](https://www.buymeacoffee.com/Junaid433)
-
-## Contact
-
-Junaid Rahman - [@Junaid Rahman](https://facebook.com/jnaid.rahman.im)
-
-Project Link: [https://github.com/Junaid433/eduboardapi](https://github.com/Junaid433/eduboardapi)
+If this saved you some time, feel free to [buy me a coffee](https://www.buymeacoffee.com/Junaid433).
