@@ -80,7 +80,8 @@ vercel --prod
 ## Vercel Runtime Layout
 
 - `api/axum.rs`: Vercel function entrypoint for the Axum router
-- `vercel.json`: Rewrite all routes to `/api/axum`
+- `vercel.json`: Rewrite `/fetch` to `/api/axum` while serving landing page files at `/`
+- `index.html`, `styles.css`, `script.js`: Static landing page and quick API playground
 - `src/lib.rs`: Shared application builder (`build_app`) used by the Vercel function and Rust consumers
 
 ## Use From Rust

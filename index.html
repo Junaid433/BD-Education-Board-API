@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EduBoardAPI | Bangladesh Result Lookup API</title>
+  <meta
+    name="description"
+    content="Rust-powered API for Bangladesh education board result lookups."
+  />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-left"></div>
+  <div class="ambient ambient-right"></div>
+
+  <header class="site-header">
+    <a class="brand" href="/">EduBoardAPI</a>
+    <nav class="top-nav">
+      <a href="#docs">Docs</a>
+      <a href="#playground">Playground</a>
+      <a href="https://github.com/Junaid433/BD-Education-Board-API" target="_blank" rel="noreferrer">
+        GitHub
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Bangladesh Education Board Results</p>
+      <h1>Simple result lookup API deployed on Vercel.</h1>
+      <p class="subtitle">
+        Fast JSON responses for <code>SSC</code> and <code>HSC</code> queries through a single
+        <code>/fetch</code> endpoint.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#playground">Try it now</a>
+        <a class="btn btn-ghost" href="#docs">Read endpoint docs</a>
+      </div>
+      <div class="stats">
+        <div>
+          <span class="stat-label">Runtime</span>
+          <strong>Rust + Axum</strong>
+        </div>
+        <div>
+          <span class="stat-label">Method</span>
+          <strong>GET / POST</strong>
+        </div>
+        <div>
+          <span class="stat-label">Endpoint</span>
+          <strong>/fetch</strong>
+        </div>
+      </div>
+    </section>
+
+    <section id="docs" class="panel">
+      <h2>Endpoint</h2>
+      <p class="muted"><code>POST /fetch</code> or <code>GET /fetch</code> with query params</p>
+
+      <div class="field-grid">
+        <article>
+          <h3>exam</h3>
+          <p>Exam code: <code>ssc</code> or <code>hsc</code></p>
+        </article>
+        <article>
+          <h3>year</h3>
+          <p>Exam year. Example: <code>2024</code></p>
+        </article>
+        <article>
+          <h3>board</h3>
+          <p>Board code. Example: <code>dinajpur</code></p>
+        </article>
+        <article>
+          <h3>roll</h3>
+          <p>Student roll number</p>
+        </article>
+        <article>
+          <h3>reg</h3>
+          <p>Registration number</p>
+        </article>
+      </div>
+
+      <div class="code-block">
+        <div class="code-head">
+          <span>cURL</span>
+          <button id="copyCurl" class="btn-copy" type="button">Copy</button>
+        </div>
+        <pre id="curlSnippet"><code>curl -sS -X POST "https://eduboardapi.vercel.app/fetch" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "exam": "ssc",
+    "year": "2024",
+    "board": "dinajpur",
+    "roll": "277795",
+    "reg": "2117829469"
+  }'</code></pre>
+      </div>
+    </section>
+
+    <section id="playground" class="panel">
+      <h2>Live Playground</h2>
+      <p class="muted">Sends a request to <code>/fetch</code> on this same deployment.</p>
+
+      <form id="fetchForm" class="form-grid">
+        <label>
+          Exam
+          <input name="exam" value="ssc" required />
+        </label>
+        <label>
+          Year
+          <input name="year" value="2024" required />
+        </label>
+        <label>
+          Board
+          <input name="board" value="dinajpur" required />
+        </label>
+        <label>
+          Roll
+          <input name="roll" value="277795" required />
+        </label>
+        <label>
+          Reg
+          <input name="reg" value="2117829469" required />
+        </label>
+        <button class="btn btn-primary submit" type="submit">Send POST /fetch</button>
+      </form>
+
+      <div class="result-wrap">
+        <div class="result-head">
+          <strong>Response</strong>
+          <span id="statusText" class="muted">Waiting for request...</span>
+        </div>
+        <pre id="resultBox"><code>{
+  "tip": "Submit the form to test the API"
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Built for Vercel deployment of
+      <a href="https://github.com/Junaid433/BD-Education-Board-API" target="_blank" rel="noreferrer">
+        BD-Education-Board-API
+      </a>
+    </p>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
