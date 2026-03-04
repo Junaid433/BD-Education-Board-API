@@ -1,6 +1,9 @@
 const form = document.getElementById("fetchForm");
 const resultBox = document.getElementById("resultBox");
 const statusText = document.getElementById("statusText");
+const submitBtn = document.getElementById("submitBtn");
+const btnText = submitBtn?.querySelector(".btn-text");
+const btnLoading = submitBtn?.querySelector(".btn-loading");
 const copyCurlBtn = document.getElementById("copyCurl");
 const curlSnippet = document.getElementById("curlSnippet");
 
@@ -21,7 +24,7 @@ copyCurlBtn?.addEventListener("click", async () => {
   }
 });
 
-form?.addEventListener("submit", async (event) => {
+submitBtn?.addEventListener("click", async (event) => {
   event.preventDefault();
 
   const formData = new FormData(form);
@@ -33,6 +36,9 @@ form?.addEventListener("submit", async (event) => {
     reg: String(formData.get("reg") ?? "").trim(),
   };
 
+  submitBtn.disabled = true;
+  btnText.style.display = "none";
+  btnLoading.style.display = "inline";
   statusText.textContent = "Requesting...";
   resultBox.textContent = "Loading...";
 
@@ -63,5 +69,9 @@ form?.addEventListener("submit", async (event) => {
       null,
       2
     );
+  } finally {
+    submitBtn.disabled = false;
+    btnText.style.display = "inline";
+    btnLoading.style.display = "none";
   }
 });

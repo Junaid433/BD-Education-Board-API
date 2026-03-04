@@ -277,20 +277,6 @@ pre {
   line-height: 1.4;
 }
 
-.form-grid {
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0.7rem;
-}
-
-label {
-  display: grid;
-  gap: 0.35rem;
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
 input {
   width: 100%;
   border: 1px solid var(--line);
@@ -301,20 +287,25 @@ input {
   color: inherit;
 }
 
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
 input:focus {
   outline: 2px solid rgba(15, 139, 141, 0.35);
   border-color: rgba(15, 139, 141, 0.8);
 }
 
-.submit {
-  grid-column: span 5;
-}
-
 .result-wrap {
-  margin-top: 0.9rem;
+  margin-top: 0;
   border: 1px solid var(--line);
   border-radius: 0.85rem;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .result-head {
@@ -343,14 +334,6 @@ input:focus {
   .field-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .form-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .submit {
-    grid-column: span 2;
-  }
 }
 
 @media (max-width: 620px) {
@@ -369,13 +352,8 @@ input:focus {
     grid-template-columns: 1fr;
   }
 
-  .field-grid,
-  .form-grid {
+  .field-grid {
     grid-template-columns: 1fr;
-  }
-
-  .submit {
-    grid-column: auto;
   }
 }
 
@@ -397,5 +375,64 @@ input:focus {
   }
   50% {
     transform: translate3d(0, 14px, 0);
+  }
+}
+
+.playground-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.playground-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+
+.submit-standalone {
+  width: 100%;
+}
+
+.submit-standalone:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-loading {
+  display: inline;
+}
+
+#resultBox {
+  min-height: 240px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+@media (max-width: 1024px) {
+  .playground-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .playground-container {
+    gap: 0.9rem;
+  }
+
+  #resultBox {
+    min-height: 200px;
+    max-height: 300px;
   }
 }

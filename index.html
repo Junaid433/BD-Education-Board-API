@@ -101,38 +101,45 @@
       <h2>Live Playground</h2>
       <p class="muted">Sends a request to <code>/fetch</code> on this same deployment.</p>
 
-      <form id="fetchForm" class="form-grid">
-        <label>
-          Exam
-          <input name="exam" value="ssc" required />
-        </label>
-        <label>
-          Year
-          <input name="year" value="2024" required />
-        </label>
-        <label>
-          Board
-          <input name="board" value="dinajpur" required />
-        </label>
-        <label>
-          Roll
-          <input name="roll" value="277795" required />
-        </label>
-        <label>
-          Reg
-          <input name="reg" value="2117829469" required />
-        </label>
-        <button class="btn btn-primary submit" type="submit">Send POST /fetch</button>
-      </form>
-
-      <div class="result-wrap">
-        <div class="result-head">
-          <strong>Response</strong>
-          <span id="statusText" class="muted">Waiting for request...</span>
+      <div class="playground-container">
+        <div class="playground-form">
+          <form id="fetchForm" class="form-grid">
+            <label>
+              Exam
+              <input name="exam" value="ssc" required />
+            </label>
+            <label>
+              Year
+              <input name="year" value="2024" required />
+            </label>
+            <label>
+              Board
+              <input name="board" value="dinajpur" required />
+            </label>
+            <label>
+              Roll
+              <input name="roll" value="277795" required />
+            </label>
+            <label>
+              Reg
+              <input name="reg" value="2117829469" required />
+            </label>
+          </form>
+          <button id="submitBtn" class="btn btn-primary submit-standalone" type="submit">
+            <span class="btn-text">Send POST /fetch</span>
+            <span class="btn-loading" style="display: none;">Loading...</span>
+          </button>
         </div>
-        <pre id="resultBox"><code>{
+
+        <div class="result-wrap">
+          <div class="result-head">
+            <strong>Response</strong>
+            <span id="statusText" class="muted">Waiting for request...</span>
+          </div>
+          <pre id="resultBox"><code>{
   "tip": "Submit the form to test the API"
 }</code></pre>
+        </div>
       </div>
     </section>
   </main>
