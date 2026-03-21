@@ -28,6 +28,8 @@ Rust API for Bangladesh Education Board result lookups, deployed as a Vercel ser
 | `roll` | Student roll number | `277794` |
 | `reg` | Registration number | `2117829468` |
 
+`reg` in the response is always populated. If the board result page exposes a registration number, that parsed value is returned. Otherwise the submitted request value is echoed back in `reg`.
+
 ### Example Request (Production)
 
 ```bash
@@ -91,7 +93,7 @@ vercel --prod
 ```toml
 [dependencies]
 eduboardapi = { package = "EduBoardAPI", git = "https://github.com/Junaid433/BD-Education-Board-API" }
-tokio = { version = "1", features = ["full"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 ```
 
 ```rust
