@@ -2,7 +2,7 @@
 
 Rust API for Bangladesh Education Board result lookups, deployed as a Vercel serverless function.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Junaid433/BD-Education-Board-API&project-name=eduboardapi&repository-name=BD-Education-Board-API)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Junaid433/eduboardapi&project-name=eduboardapi&repository-name=eduboardapi)
 
 ## Overview
 
@@ -92,7 +92,7 @@ vercel --prod
 
 ```toml
 [dependencies]
-eduboardapi = { package = "EduBoardAPI", git = "https://github.com/Junaid433/BD-Education-Board-API" }
+eduboardapi = { package = "EduBoardAPI", git = "https://github.com/Junaid433/eduboardapi" }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 ```
 
