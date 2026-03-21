@@ -1,6 +1,6 @@
 [package]
 name = "EduBoardAPI"
-version = "1.1.0"
+version = "1.1.1"
 edition = "2024"
 description = "API Wrapper For Bangladesh Education Board Website"
 license = "MIT"
